@@ -1,0 +1,195 @@
+--in MultiStack.adb 
+--package for UseMultiStack
+
+with Ada.Text_IO; use Ada.Text_IO;
+package body MultiStack IS
+
+   Stack : array (min..max) of Names := (others => Names'Last); -- Main Stack
+   Base  : array (1..n+1) of integer; -- Base Array
+   Top   : array (1..n) of integer; -- Top Array
+   OldTop : array(1..n) of integer;
+--   growth as J+1 instead of j - look at page 24
+
+   package NameIO is new Ada.Text_IO.Enumeration_IO(Names); use NameIO;
+   package IIO is new Ada.Text_IO.integer_IO(integer);
+   use IIO;
+
+   package FIIO is new Ada.Text_IO.Float_IO(Float);
+   use FIIO;
+   function floor (x : float) return integer IS -- Floor Function
+      temp : integer;
+      begin
+      temp := integer(x); -- force conversion to integer
+      if( float(temp) <= x) then
+            return temp;
+      else
+            return temp - 1;
+            end if;
+      end Floor;
+
+      procedure Push( stkNum : integer; Value : Names) IS -- Push operation + Overflow Check
+      begin
+      -- I put this here to read the entire stack array hope is the second to last value to 
+      -- be pushed into the array.
+      
+         if value = names'pred(names'pred(names'last)) then 
+            for x in stack'range loop
+               put(stack(x));
+               New_Line;
+            end loop;
+         end if;
+
+            Top(stkNum) := Top(stkNum) + 1;
+            if Top(stkNum) > Base(StkNum + 1) then
+               Put_Line("Overflow Detected, attempting to reallocate memory...");
+                ReAllocate(stkNum, Value);
+            else
+               Stack(Top(stkNum)) := Value;
+            end if;
+         end Push;
+
+ -- Pop Operation + Underflow Check
+         procedure Pop(stkNum: integer; Value : OUT Names) IS
+            begin
+            if Top(stkNum) = Base(stkNum) then
+                  Put("Underflow Detected, Terminating Deletion.");
+            else
+               Value := Stack(top(stkNum));
+               top(stkNum) := Top(Stknum) - 1;
+            end if;
+         end Pop;
+
+-- Reallocate Operation + Movestack
+         procedure ReAllocate( k : in integer; Value : Names) IS 
+            availSpace, j, Totalinc : integer := 0;
+            sigma, tau, alpha, beta : Float := 0.0;
+            equalAllocate : Float := 0.15;
+            growthAllocate : float := 0.85;
+            minSpace : integer := 1;
+            diff : integer := 0;
+            temp : integer := n;
+
+            Growth : array (1..n) of integer;
+            newBase : array (1..n) of integer;
+
+         begin
+                                
+           -- Reallocate Algorithm from hymnal
+           -- ReA1
+            
+               Availspace := M - L;
+               J := n;
+               totalInc := 0;
+            Put("Current values of top, oldtop, and base:");
+            New_Line;
+            for i in 1..n loop
+                  put("Top(");put(i,1);Put(") : "); put(top(i),1);
+                  put(" , oldTop(");put(i,1);Put(") : "); put(oldtop(i),1);
+                  put(" , Base(");put(i,1);Put(") : "); put(base(i),1);
+                  New_Line;
+            end loop;
+
+               while J > 0 loop
+                  Availspace := Availspace - (Top(j) - Base(j));
+                  if Top(j) > oldTop(j) then
+                     Growth(j) := Top(j) - oldTop(j);
+                     TotalInc := TotalInc + Growth(j);
+                  else
+                     Growth(j) := 0;
+               end if;
+                  j := j-1;
+               end loop;
+            --ReA2
+               if Availspace < (Minspace - 1) then
+                  Put("Not Enough Memory for repacking, halting...");
+                  New_Line;
+                  
+         
+            for x in stack'range loop
+               put(stack(x));
+               New_Line;
+            end loop;
+        
+                  
+--                  for j in base(1)+1..base(base'Last) loop
+  --                   put("Location" & Integer'Image(j) & " is ");
+    --                 put((stack(j)));
+      --               New_Line;
+        --             exit when stack(j) = NotUsed;
+          --        end loop;
+                  raise Program_Error;
+               end if;
+            --ReA3
+               Alpha := equalAllocate * Float(Availspace);
+               Alpha := alpha / float(n);
+               New_Line;
+               Beta := GrowthAllocate * Float(Availspace);
+               Beta := beta / Float(TotalInc);
+
+               newBase(1) := base(1);
+               Sigma := 0.0;
+
+               for J in 2..N loop
+                  Tau := Sigma + Alpha + (float(Growth(J-1)) * Beta);
+                  newBase(j):=newBase(j-1)+(top(j-1)-base(j-1)) + floor(tau) - floor(sigma);
+                  Sigma := Tau;
+               end loop;
+
+               Top(k) := Top(k) - 1;
+               for j in 2..N loop
+                  if newBase(j) < base(j) then
+                        diff := base(j) - newBase(j);
+                     for i in integer RANGE(base(j) + 1)..(top(j)) loop
+                           Stack(i - diff) := stack(i);
+                        end loop;
+                        base(j) := newBase(j);
+                        top(j) := top(j) - diff;
+                     end if;
+                  end loop;
+
+              while temp <= n and temp >= 2 loop 
+              -- A while loop worked and moved the stack, for some reason a for loop written as in the notes 
+              -- did not work even using a different variable and not j.
+                  if newBase(temp) > Base(temp) then
+                        diff:=newBase(temp)-base(temp);
+                        for i in (Top(temp))..(base(temp)+1) loop
+                           stack(i+diff):=stack(i);
+                        end loop;
+                        base(temp):=newBase(temp);
+                        top(temp):=top(temp) + diff;
+                  end if;
+                  temp := temp - 1;
+               end loop;
+
+
+               top(k) := Top(K) + 1;
+            Stack(Top(k)) := value;
+            Put("Setting up for next possible overflow, listing new base and top--");
+            New_Line;
+            for J in 1..N loop
+               Put("Stack : "); put(j,1);
+                  Put(" Base "); put(j,1); put(" : "); put(base(j),1);
+                  Put(" ,Top "); put(j,1); put(" : "); put(top(j),1);
+                  New_Line;
+                  oldTop(J) := Top(J);
+               end loop;
+
+         end ReAllocate;
+
+      begin
+         Put("Stacks Initialized.");
+         for j in 1..n+1 loop -- Initialize Top/Base
+            if J = n + 1 then
+               Base(n+1) := m;
+            else
+            Base(j) := integer(float'floor(float((j-1))/float(n)*float(m)))+l;
+               Top(j) := Base(j);
+               oldTop(j) := top(j);
+            New_Line;
+            Put("Stack Num: "); put(j,1); put(", Base: "); put(base(j),1); put(" , Top: "); put(top(j),1);
+            end if;
+            end loop;
+         New_Line;
+         
+
+end MultiStack;

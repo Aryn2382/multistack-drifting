@@ -1,0 +1,138 @@
+V "GNAT Lib v2016"
+M P W=b
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_ENUMERATION_MAPS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U multistackmain%b	multistackmain.adb	85229ea5 NE OO SU IU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.enumeration_aux%s  a-tienau.adb	a-tienau.ali
+W ada.text_io.enumeration_io%s
+Z ada.text_io.float_aux%s  a-tiflau.adb		a-tiflau.ali
+W ada.text_io.float_io%s
+Z ada.text_io.integer_aux%s  a-tiinau.adb	a-tiinau.ali
+W ada.text_io.integer_io%s
+W interfaces%s		interfac.ads		interfac.ali
+W multistack%s		multistack.adb		multistack.ali
+W system%s		system.ads		system.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+W system.img_enum_new%s	s-imenne.adb		s-imenne.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.val_enum%s	s-valenu.adb		s-valenu.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tienau.ads		20160516092928 6a9c157b ada.text_io.enumeration_aux%s
+D a-tienio.ads		20160516092928 fc618ae6 ada.text_io.enumeration_io%s
+D a-tienio.adb		20160516092930 c9e6b5af ada.text_io.enumeration_io%b
+D a-tiflau.ads		20160516092928 c0393f21 ada.text_io.float_aux%s
+D a-tiflio.ads		20160516092926 56fbda09 ada.text_io.float_io%s
+D a-tiflio.adb		20160516092928 fd9b1cfc ada.text_io.float_io%b
+D a-tiinau.ads		20160516092930 8114c8e4 ada.text_io.integer_aux%s
+D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
+D a-tiinio.adb		20160516092930 df9cd7af ada.text_io.integer_io%b
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D multistack.ads	20170419214134 d7d05961 multistack%s
+D multistack.adb	20170419220230 9eb3a109 multistack%b
+D multistackmain.adb	20170419194126 6a9f3210 multistackmain%b
+D system.ads		20160516092930 2da59038 system%s
+D s-conca2.ads		20160516092930 02a0d7d0 system.concat_2%s
+D s-conca3.ads		20160516092932 0b705ca5 system.concat_3%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-fatflt.ads		20160516092930 11beb392 system.fat_flt%s
+D s-fatgen.ads		20160516092932 49cbaf86 system.fat_gen%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-imenne.ads		20160516092928 614c06c0 system.img_enum_new%s
+D s-imgint.ads		20160516092928 02dbe0c2 system.img_int%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-valenu.ads		20160516092930 bb1a4295 system.val_enum%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 19e8 21|1r6 2r5 5r23 34r29
+X 6 a-textio.ads
+49K13*Text_IO 471e16 21|1w10 2r9 5r27 34r33
+166U14*New_Line 21|63s78 66s13
+242U14*Put 21|17s4 19s4 21s4 23s4 25s4 55s7 59s13 63s7 63s64 64s10 64s64
+. 67s13 73s19 75s19 80s16 80s43
+X 8 a-tienio.ads
+26k21*Enumeration_IO 55e31 21|34r41
+32U14 Get 21|68s13[34]
+40U14 Put 21|76s19[34] 80s32[34]
+X 14 a-tiinio.ads
+46k21*Integer_IO 85e27 21|5r35
+56U14 Get 21|18s4[5] 20s4[5] 22s4[5] 24s4[5] 26s4[5] 57s7[5]
+66U14 Put 21|63s49[5] 64s49[5] 74s19[5] 80s72[5]
+X 19 multistack.ads
+12k9*MultiStack 20e15 21|1w19 33r28
+16U14 Push 21|44s13[33] 44s29[33] 44s43[33] 44s63[33] 44s80[33] 45s13[33]
+. 45s41[33] 46s13[33] 46s55[33] 46s69[33] 47s13[33] 47s28[33] 47s47[33] 47s63[33]
+. 48s13[33] 48s30[33] 48s45[33] 48s57[33] 49s13[33] 49s30[33] 49s46[33] 49s59[33]
+. 50s13[33] 50s38[33] 50s63[33] 79s16[33]
+17U14 Pop 21|45s28[33] 46s29[33] 46s42[33] 46s82[33] 48s71[33] 71s16[33]
+X 21 multistackmain.adb
+4U11*MultiStackMain 4b11 86l5 86t19
+5K12 IIO[14|46] 6r8
+8i4 low{integer} 18m8 33r45
+9i4 high{integer} 20m8 33r49
+12i4 n{integer} 26m8 33r39 58r36 61r47
+13i4 m{integer} 24m8 33r41
+14i4 l{integer} 22m8 33r43
+29E12 Names 31e77 33r55 34r56 35r14
+29n22 Pop{29E12} 35r23 70r23 72r27
+29n27 Push{29E12}
+29n33 Switch{29E12} 69r30 72r43
+29n41 Burris{29E12} 44r20 49r37
+29n49 Zhou{29E12} 44r36 48r64
+29n55 Shashidhar{29E12} 44r50
+29n67 Shannon{29E12} 44r70
+29n76 Yang{29E12} 44r87
+30n22 Smith{29E12} 45r20 47r70
+30n29 Wei{29E12} 45r48
+30n34 Rabieh{29E12} 46r20
+30n42 Song{29E12} 46r62
+30n48 Cho{29E12} 46r76 49r53
+30n53 Varol{29E12} 47r20
+30n60 Karabiyik{29E12} 47r35
+30n71 Cooper{29E12} 47r54
+31n22 McGuire{29E12} 48r20 49r66
+31n31 Najar{29E12} 48r37
+31n38 An{29E12} 48r52
+31n42 Deering{29E12} 49r20
+31n51 Hope{29E12} 50r20
+31n57 Pray{29E12} 50r45
+31n63 NoHope{29E12} 50r70
+31n71 Empty{29E12}
+33K15 Stack[19|12] 33r68
+34K15 NameIO[8|26] 34r68
+35e7 Temp{29E12} 45m34 46m35 46m48 46m88 48m77 68m17 69r23 70r16 71m27 72r19
+. 72r35 76r23 79r28 80r36
+36i7 stkNum{integer} 57m11 58r13 58r27 61r21 61r37 63r53 64r53 71r20 74r23
+. 79r21 80r76
+
